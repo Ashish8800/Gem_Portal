@@ -10,7 +10,7 @@ pipeline{
         stage("Clone Code"){
             steps{
                 echo "Cloning the code"
-                git branch: 'production_mongoDB', credentialsId: 'token_ashish', url: 'https://github.com/ashish8800/GeM_Backend.git'
+                git branch: 'main', credentialsId: 'token_ashish', url: 'https://github.com/ashish8800/GeM_Backend.git'
             }
             
         }
