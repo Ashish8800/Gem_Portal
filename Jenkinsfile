@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     environment {
-        GITHUB_TOKEN= credentials('token_ashish')
+        GITHUB_TOKEN= credentials('tokenashish')
         PATH = "$PATH:/usr/bin" // Add the directory where docker-compose is installed
     }
     
@@ -10,7 +10,7 @@ pipeline{
         stage("Clone Code"){
             steps{
                 echo "Cloning the code"
-                git branch: 'main', credentialsId: 'token_ashish', url: 'https://github.com/Ashish8800/Gem_Portal.git'
+                git branch: 'main', credentialsId: 'tokenashish', url: 'https://github.com/Ashish8800/Gem_Portal.git'
             }
             
         }
@@ -34,7 +34,7 @@ pipeline{
         stage("Push to Docker Hub"){
             steps{
                 echo "Pushing the Image"
-                sh "export CR_PAT=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"
+                sh "export CR_PAT=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"
                 sh "echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin"
                 sh "docker push ghcr.io/ashish8800/gem_backend"
                 sh "docker push ghcr.io/ashish8800/gem_frontend"
