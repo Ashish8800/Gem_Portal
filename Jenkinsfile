@@ -3,7 +3,6 @@ pipeline{
     
     environment {
         GITHUB_TOKEN_PWD= credentials('tokenashish')
-        GITHUB_TOKEN_USR= credentials('Ashish8800')
         PATH = "$PATH:/usr/bin" // Add the directory where docker-compose is installed
     }
     
