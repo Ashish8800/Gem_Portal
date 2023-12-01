@@ -14,11 +14,18 @@ pipeline{
             }
             
         }
-
-        stage("building the code"){
+         stage("building the frontend code"){
             steps{
                 echo "Building the Image"
-                sh "cd ${WORKSPACE} && docker build -t ghcr.io/ashish8800/gem_backend:latest ."
+                sh "cd ${WORKSPACE}/frontend && docker build -t ghcr.io/ashish8800/gem_frontend:latest ."
+            }
+                       
+        } 
+        
+        stage("building the backend code"){
+            steps{
+                echo "Building the Image"
+                sh "cd ${WORKSPACE}/backend && docker build -t ghcr.io/ashish8800/gem_backend:latest ."
             }
                        
         }    
@@ -30,6 +37,7 @@ pipeline{
                 sh "export CR_PAT=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"
                 sh "echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin"
                 sh "docker push ghcr.io/ashish8800/gem_backend"
+                sh "docker push ghcr.io/ashish8800/gem_frontend"
                 
             }
             
