@@ -12,14 +12,14 @@ require('dotenv').config();
 const Port = process.env.PORT || 5008
 global.nullBidsKeys = [];
 global.searchKeywords = [];
-// global.emailsArray = process.env.EMAILS || 'rahul@inevitableinfotech.com, vijay@inevitableinfotech.com, kumar@inevitableinfotech.com, manjunatha@inevitableinfotech.com, anurag@inevitableinfotech.com, arunabh80@inevitableinfotech.com'
-global.emailsArray = 'anurag@inevitableinfotech.com,ashish@inevitableinfotech.com'
+global.emailsArray = process.env.EMAILS || 'rahul@inevitableinfotech.com, vijay@inevitableinfotech.com, kumar@inevitableinfotech.com, manjunatha@inevitableinfotech.com, anurag@inevitableinfotech.com, arunabh80@inevitableinfotech.com'
+// global.emailsArray = 'anurag@inevitableinfotech.com,ashish@inevitableinfotech.com'
 //global.emailsArray = 'rahul@inevitableinfotech.com, anurag@inevitableinfotech.com'
 var dailyEmailJob = null;
 app.use(cors())
 app.use(express.json())
-// global.fileName = process.env.FILENAME || './Keywords_KeyPhrases_25May2023.xlsx';
-global.fileName = './Keywords_for_test.xlsx';
+global.fileName = process.env.FILENAME || './Keywords_KeyPhrases_25May2023.xlsx';
+// global.fileName = './Keywords_for_test.xlsx';
 const { MongoClient } = require('mongodb');
 // const uri = 'mongodb://inviDbAdmin:AdminInviMongoDb123@localhost:27017/bids_database?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false'; // Replace with your MongoDB connection string
 //const uri = process.env.MONGODB || 'mongodb://localhost:27017/bids_database?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false'; // Replace with your MongoDB connection string
@@ -97,9 +97,9 @@ async function startDailyJob() {
 
         } else {
             //     // // Schedule task to run each 10 minutes
-            dailyEmailJob = cron.schedule('*/05 * * * *', () => {
+            // dailyEmailJob = cron.schedule('*/05 * * * *', () => {
                 // Schedule task to run every day at 1 AM
-                // dailyEmailJob = cron.schedule('0 1 * * *', () => {
+                dailyEmailJob = cron.schedule('0 1 * * *', () => {
                 // Call the function to start daily job
                 if (global.searchKeywords.length >= 0) {
                     writeExcel(global.searchKeywords, global.emailsArray, true)
