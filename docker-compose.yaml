@@ -39,7 +39,7 @@ services:
       - backend
     restart: on-failure
     ports:
-      - "3109:3107"
+      - "3109:80"
 
 networks:
   default-network:
