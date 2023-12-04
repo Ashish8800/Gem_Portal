@@ -5,7 +5,7 @@ services:
     image: mongo
     restart: always
     ports:
-      - "27030:27017"
+      - "27031:27017"
     networks:
       - default-network
     volumes:
@@ -30,7 +30,7 @@ services:
 #      - MONGO_URL=mongodb://mongodb:27017/bids_database
 
     ports:
-      - "5008:5008"
+      - "5010:5008"
 
   frontend:
     container_name: gem_frontend
@@ -43,7 +43,7 @@ services:
       - backend
     restart: on-failure
     ports:
-      - "3107:80"
+      - "3109:80"
 
 networks:
   default-network:
