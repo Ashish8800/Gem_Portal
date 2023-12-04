@@ -7,13 +7,13 @@ pipeline{
     }
     
     stages{
-        stage("Clone Code"){
-            steps{
-                echo "Cloning the code"
-                git branch: 'main', credentialsId: 'tokenashish', url: 'https://github.com/Ashish8800/Gem_Portal.git'
-            }
+        // stage("Clone Code"){
+        //     steps{
+        //         echo "Cloning the code"
+        //         git branch: 'main', credentialsId: 'tokenashish', url: 'https://github.com/Ashish8800/Gem_Portal.git'
+        //     }
             
-        }
+        // }
          stage("building the frontend code"){
             steps{
                 echo "Building the Image"
