@@ -15,9 +15,7 @@ services:
 
   backend:
     container_name: gem_backend
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    images: ghcr.io/ashish8800/gem_backend:latest
     networks:
       - default-network
       - gem_frontend-network
@@ -34,9 +32,7 @@ services:
 
   frontend:
     container_name: gem_frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    images: ghcr.io/ashish8800/gem_frontend:latest
     networks:
       - gem_frontend-network
     depends_on:
