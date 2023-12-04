@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     environment {
-        GITHUB_TOKEN_PWD= credentials('tokenashish')
+        GITHUB_TOKEN= credentials('gittoken')
         PATH = "$PATH:/usr/bin" // Add the directory where docker-compose is installed
     }
     
