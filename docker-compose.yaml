@@ -1,11 +1,11 @@
 version: "3"
 services:
   mongodb:
-    container_name: gem-mongodb2
+    container_name: gem-mongodb
     image: mongo
     restart: always
     ports:
-      - "27031:27017"
+      - "27032:27017"
     networks:
       - default-network
     volumes:
