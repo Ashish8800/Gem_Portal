@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     environment {
-        GITHUB_TOKEN= credentials('gittoken')
+        GITHUB_TOKEN= credentials('webhook')
         PATH = "$PATH:/usr/bin" // Add the directory where docker-compose is installed
     }
     
