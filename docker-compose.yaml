@@ -5,7 +5,7 @@ services:
     image: mongo
     restart: always
     ports:
-      - "27032:27017"
+      - "27031:27017"
     networks:
       - default-network
     volumes:
@@ -14,8 +14,9 @@ services:
       - MONGO_INITDB_DATABASE=bids_database
 
   backend:
+    build:
+      context: .
     container_name: gem_backend
-    image: ghcr.io/ashish8800/gem_backend:latest
     networks:
       - default-network
       - gem_frontend-network
@@ -28,18 +29,19 @@ services:
 #      - MONGO_URL=mongodb://mongodb:27017/bids_database
 
     ports:
-      - "5010:5008"
+      - "5011:5008"
 
   frontend:
+    build:
+      context: .
     container_name: gem_frontend
-    image: ghcr.io/ashish8800/gem_frontend:latest
     networks:
       - gem_frontend-network
     depends_on:
       - backend
     restart: on-failure
     ports:
-      - "3109:80"
+      - "3111:80"
 
 networks:
   default-network:
