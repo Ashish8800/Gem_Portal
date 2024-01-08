@@ -15,7 +15,7 @@ services:
 
   backend:
     build:
-      context: .
+      context: backend/.
     container_name: gem_backend
     networks:
       - default-network
@@ -33,7 +33,7 @@ services:
 
   frontend:
     build:
-      context: .
+      context: frontend/.
     container_name: gem_frontend
     networks:
       - gem_frontend-network
